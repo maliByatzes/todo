@@ -12,6 +12,14 @@ import (
 const todoFilename = ".todo.json"
 
 func main() {
+	flag.Usage = func() {
+		fmt.Fprintf(flag.CommandLine.Output(),
+			"%s tool. Developed for <<>>\n", os.Args[0])
+		fmt.Fprintf(flag.CommandLine.Output(), "Copyright 2023\n")
+		fmt.Fprintf(flag.CommandLine.Output(), "Usage information:\n")
+		flag.PrintDefaults()
+	}
+
 	// Parsing the command line flags
 	task := flag.String("task", "", "Task to be included in the Todo list")
 	list := flag.Bool("list", false, "List all tasks")
